@@ -46,8 +46,10 @@ fi
 split=(${TEST// / })
 TEST=${split[@]/#/${REPO_PATH}/}
 MACHINE_TYPE=$(uname -m)
-if [ $MACHINE_TYPE != "armv7l" ]; then
+if [ $MACHINE_TYPE == "x86_64" ]; then
 	RACE="--race"
+else
+	RACE=" "
 fi
 
 function unit_tests {
